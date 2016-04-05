@@ -1,6 +1,7 @@
 import random
 
-# this works but repeats some of same numbers
+# randomly generates your euro lotto numbers
+# need to add lucky stars to the end of the list, maybe with extend.
 
 my_list = []
 numbers = list(range(1, 51))
@@ -17,9 +18,6 @@ def checking_my_list():
 
         if len(my_list) == 5:
             print (my_list)
-
-
-
 
 
 checking_my_list()
