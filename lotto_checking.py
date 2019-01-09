@@ -10,7 +10,19 @@ class TheNumbers():
     print('Would you like to Randomly Gen Euro Lotto numbers ?''\n')
 
     if input('[Y]es or [N]o  ') == 'y'.lower():
-        print(random.choice(numbers))
+        while True:
+            new = random.choice(numbers)
+            # if new in my_list:
+            #     return new
+            if new not in my_list:
+                my_list.append(new)
+
+            my_list.sort()
+
+            if len(my_list) == 5:
+                print (my_list)
+                sys.exit()
+        # print(random.choice(numbers))
         # print('Working')
         # sys.exit()
         #
