@@ -3,31 +3,30 @@ import sys
 # randomly generates your euro lotto numbers
 # need to add lucky stars to the end of the list, maybe with extend.
 
-my_list = []
-numbers = list(range(1, 51))
+main_numbers_list = []
+main_numbers = list(range(1, 51))
+stars_numbers = list(range(1,10))
 
 class TheNumbers():
     print('Would you like to Randomly Gen Euro Lotto numbers ?''\n')
 
     if input('[Y]es or [N]o  ') == 'y'.lower():
         while True:
-            new = random.choice(numbers)
-            # if new in my_list:
-            #     return new
-            if new not in my_list:
-                my_list.append(new)
+            main = random.choice(main_numbers)
+            if main not in main_numbers_list:
+                main_numbers_list.append(main)
 
-            my_list.sort()
+            main_numbers_list.sort()
 
-            if len(my_list) == 5:
-                print (my_list)
+            if len(main_numbers_list) == 5:
+                print (main_numbers_list)
                 sys.exit()
         # print(random.choice(numbers))
         # print('Working')
         # sys.exit()
         #
-    else:
-        print('Thanks for playing See Ya next time')
+    # else:
+    #     print('Thanks for playing See Ya next time')
 
 
 
