@@ -14,25 +14,29 @@ class TheNumbers():
     if input('[Y]es or [N]o  ') == 'y'.lower():
         while True:
             main = random.choice(main_numbers)
+            ###
             stars = random.choice(stars_numbers)
-
+            ###
             if main not in main_numbers_list:
                 main_numbers_list.append(main)
-                if stars not in stars_numbers_list:
-                    stars_numbers_list.append(stars)
-
 
             main_numbers_list.sort()
-            stars_numbers_list.sort()
 
             if len(main_numbers_list) == 5:
                 print(main_numbers_list)
+                # print('GOOD LUCK')
+
+        #######################################################################
+
+            if stars not in stars_numbers_list:
+                stars_numbers_list.append(stars)
+                stars_numbers_list.sort()
                 if len(stars_numbers_list) == 2:
-                    print (main_numbers_list, stars_numbers_list)
-                    print (main_numbers_list)
+                    print (stars_numbers_list)
 
 
-                sys.exit()
+        
+        # sys.exit()
 
 
 TheNumbers()
