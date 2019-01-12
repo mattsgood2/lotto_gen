@@ -23,7 +23,7 @@ class TheNumbers():
             main_numbers_list.sort()
 
             if len(main_numbers_list) == 5:
-                print(main_numbers_list)
+                print('main_numbers {}, '.format(main_numbers_list))
                 # print('GOOD LUCK')
 
         #######################################################################
@@ -32,11 +32,11 @@ class TheNumbers():
                 stars_numbers_list.append(stars)
                 stars_numbers_list.sort()
                 if len(stars_numbers_list) == 2:
-                    print (stars_numbers_list)
+                    print('lucky stars {}, '.format(stars_numbers_list))
 
 
-        
-        # sys.exit()
+
+
 
 
 TheNumbers()
