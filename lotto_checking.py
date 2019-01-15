@@ -24,7 +24,6 @@ def lotto_num():
 
             if len(main_numbers_list) == 5:
                 return main_numbers_list
-                # print('main_numbers {}, '.format(main_numbers_list))
                 break
 
 ##checks and randomly gens lucky star Numbers##
@@ -34,21 +33,23 @@ def stars():
         while True:
             star = random.choice(stars_numbers)
 
-            stars_numbers_list.append(star)
-
             if star not in stars_numbers_list:
+                stars_numbers_list.append(star)
 
-                stars_numbers_list.sort()
+            stars_numbers_list.sort()
 
             if len(stars_numbers_list) == 2:
                 return stars_numbers_list
-                # print('Euro Number = {} =, Lucky Stars = {} = , '.format(main_numbers_list, stars_numbers_list))
-                print('Thanks For Using Me, Bye ! ')
+                # print('Thanks For Using Me, Bye ! ')
                 break
+
+def printing():
+    print('Main Numbers {} \nLucky Stars * {} \n'.format(main_numbers_list, stars_numbers_list))
 
 
 lotto_num()
 stars()
+printing()
 # TheNumbers()
 # if already in my_list
 
