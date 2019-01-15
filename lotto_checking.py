@@ -1,6 +1,4 @@
 import random
-
-# import sys
 # randomly generates your euro lotto numbers
 # need to add lucky stars to the end of the list, maybe with extend.
 
@@ -9,8 +7,9 @@ stars_numbers_list = []
 main_numbers = list(range(1, 51))
 stars_numbers = list(range(1,10))
 
+### Working on this app as i dont trust the lotto lucky dip least this way I know its Truely random ###
 
-# print('Would you like to Randomly Gen Euro Lotto numbers ?''\n')
+
 def lotto_num():
 
     if input('Would you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
@@ -40,7 +39,6 @@ def stars():
 
             if len(stars_numbers_list) == 2:
                 return stars_numbers_list
-                # print('Thanks For Using Me, Bye ! ')
                 break
 
 def printing():
