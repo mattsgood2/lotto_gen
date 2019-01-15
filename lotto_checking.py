@@ -1,5 +1,6 @@
 import random
-import sys
+
+# import sys
 # randomly generates your euro lotto numbers
 # need to add lucky stars to the end of the list, maybe with extend.
 
@@ -22,7 +23,8 @@ def lotto_num():
             main_numbers_list.sort()
 
             if len(main_numbers_list) == 5:
-                print('main_numbers {}, '.format(main_numbers_list))
+                return main_numbers_list
+                # print('main_numbers {}, '.format(main_numbers_list))
                 break
 
 ##checks and randomly gens lucky star Numbers##
@@ -39,7 +41,8 @@ def stars():
                 stars_numbers_list.sort()
 
             if len(stars_numbers_list) == 2:
-                print('lucky stars {}, '.format(stars_numbers_list))
+                return stars_numbers_list
+                # print('Euro Number = {} =, Lucky Stars = {} = , '.format(main_numbers_list, stars_numbers_list))
                 print('Thanks For Using Me, Bye ! ')
                 break
 
