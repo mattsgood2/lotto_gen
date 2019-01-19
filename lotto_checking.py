@@ -1,17 +1,11 @@
 import random
-# randomly generates your euro lotto numbers
-# need to add lucky stars to the end of the list, maybe with extend.
+### randomly generates your euro lotto numbers
+### need to add lucky stars to the end of the list, maybe with extend.
+### added ability to create lucky stars
+### Working on this app as i dont trust the lotto's lucky dip, least this way I know its Truely random ###
+### Needs alot of re-write due to it being not the best ###
+### have re-wrote to create all under a class ###
 
-# main_numbers_list = []
-# stars_numbers_list = []
-# main_numbers = list(range(1, 51))
-# stars_numbers = list(range(1,10))
-
-### Working on this app as i dont trust the lotto lucky dip least this way I know its Truely random ###
-#### Needs alot of re-write due to it being not the best ###
-
-
-### checkes main bumbers are not already within the list if not then prints out ###
 class lotto:
 
     main_numbers_list = []
@@ -25,7 +19,7 @@ class lotto:
         self.printing()
 
     def lotto_num(self):
-
+# randomly creates lotto numbers, and if already in list will not duplicate them
         if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
             while True:
                 main = random.choice(self.main_numbers)
@@ -39,7 +33,7 @@ class lotto:
                     return self.main_numbers_list
                     break
 
-## checks and randomly gens lucky star Numbers ##
+# checks and randomly creates lucky star Numbers ##
     def stars(self):
 
         if input('\nWould You like some Lucky Stars ? --> [Y]es or [N]o ') == 'y'.lower():
@@ -54,7 +48,7 @@ class lotto:
                 if len(self.stars_numbers_list) == 2:
                     return self.stars_numbers_list
                     break
-### prints all the main numbers and Lucky stars ###
+# prints all the main and Lucky stars umbers and formats them nicely
     def printing(self):
         print('\nMain Numbers {} \nLucky Stars * {} \n'.format(self.main_numbers_list, self.stars_numbers_list))
 
