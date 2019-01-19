@@ -14,7 +14,7 @@ stars_numbers = list(range(1,10))
 ### checkes main bumbers are not already within the list if not then prints out ###
 def lotto_num():
 
-    if input('Would you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
+    if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
         while True:
             main = random.choice(main_numbers)
 
@@ -30,7 +30,7 @@ def lotto_num():
 ## checks and randomly gens lucky star Numbers ##
 def stars():
 
-    if input('Would You like some Lucky Stars ? --> [Y]es or [N]o ') == 'y'.lower():
+    if input('\nWould You like some Lucky Stars ? --> [Y]es or [N]o ') == 'y'.lower():
         while True:
             star = random.choice(stars_numbers)
 
@@ -44,7 +44,7 @@ def stars():
                 break
 ### prints all the main numbers and Lucky stars ###
 def printing():
-    print('Main Numbers {} \nLucky Stars * {} \n'.format(main_numbers_list, stars_numbers_list))
+    print('\nMain Numbers {} \nLucky Stars * {} \n'.format(main_numbers_list, stars_numbers_list))
 
 
 lotto_num()
