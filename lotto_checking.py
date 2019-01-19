@@ -52,14 +52,11 @@ class lotto:
     def printing(self):
         print('\nMain Numbers {} \nLucky Stars * {} \n'.format(self.main_numbers_list, self.stars_numbers_list))
 
+# this allows the app to work under one class
     def __init__(self):
         self.setup()
 
+# calls the app to start
 lotto()
 
-# lotto_num()
-# stars()
-# printing()
-# if already in my_list
-
-# To run program in powershell type python lotto_checking.py
+# To run program in powershell type "python lotto_checking.py"
