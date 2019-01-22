@@ -49,12 +49,19 @@ class lotto:
                     return self.stars_numbers_list
                     break
 # prints all the main and Lucky stars umbers and formats them nicely
-    def printing(self):
-        # f = open('lotto_num.txt', 'w+')
 # going to add function to write to file to keep track of lotto numbers drawn
 # also will add datetime to show when numbers were drawn
+    def printing(self):
         print('\nMain Numbers {} \nLucky Stars * {} \n'.format(self.main_numbers_list, self.stars_numbers_list))
+#################################
+    def ptf(self):
+        pass
 
+
+
+
+
+#################################
 # this allows the app to work under one class
     def __init__(self):
         self.setup()
