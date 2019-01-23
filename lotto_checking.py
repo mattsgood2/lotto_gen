@@ -54,7 +54,14 @@ class lotto:
     def printing(self):
         print('\nMain Numbers {} \nLucky Stars * {} \n'.format(self.main_numbers_list, self.stars_numbers_list))
 #################################
+# Print to File, will print the lotto numbers to a File
+#  def ptf ():
+# ...     name = input("name > ")
+# ...     n = open("ptf.txt", 'a')
+# ...     n.write(name + "\n")
+#above was testing in powershell
     def ptf(self):
+
         pass
 
 
