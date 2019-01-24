@@ -52,7 +52,10 @@ class lotto:
 # going to add function to write to file to keep track of lotto numbers drawn
 # also will add datetime to show when numbers were drawn
     def printing(self):
+        p = open("Lotto_numbers.txt", "a")
+        p.write("Main Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" + str(self.stars_numbers_list) + "\n")
         print('\nMain Numbers {} \nLucky Stars * {} \n'.format(self.main_numbers_list, self.stars_numbers_list))
+
 #################################
 # Print to File, will print the lotto numbers to a File
 #  def ptf ():

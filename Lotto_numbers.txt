@@ -1,0 +1,2 @@
+Main Numbers-[4, 12, 23, 25, 32]-Lucky Stars[1, 8]
+Main Numbers-[6, 8, 37, 38, 45]-Lucky Stars[4, 5]
