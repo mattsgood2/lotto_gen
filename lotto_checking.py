@@ -1,4 +1,5 @@
 import random
+import datetime
 ### randomly generates your euro lotto numbers
 ### need to add lucky stars to the end of the list, maybe with extend.
 ### added ability to create lucky stars
@@ -52,10 +53,11 @@ class lotto:
 # going to add function to write to file to keep track of lotto numbers drawn
 # also will add datetime to show when numbers were drawn
     def printing(self):
-        p = open("Lotto_numbers.txt", "a")
-        p.write("Main Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" + str(self.stars_numbers_list) + "\n")
-        print('\nMain Numbers {} \nLucky Stars * {} \n'.format(self.main_numbers_list, self.stars_numbers_list))
-
+        time_now = datetime.datetime.now()
+        p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+        p.write("\nMain Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" + str(self.stars_numbers_list) + " " + str(time_now) + "\n")
+        print('\nMain Numbers {} \nLucky Stars * {}\n '.format(self.main_numbers_list, self.stars_numbers_list))
+        # print(time_now)
 #################################
 # Print to File, will print the lotto numbers to a File
 #  def ptf ():
