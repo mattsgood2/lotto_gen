@@ -14,6 +14,7 @@ class lotto:
     main_numbers = list(range(1, 51))
     stars_numbers = list(range(1,10))
 
+# sets up the app to run as one unit
     def setup(self):
         self.lotto_num()
         self.stars()
@@ -54,27 +55,16 @@ class lotto:
 # also will add datetime to show when numbers were drawn
     def printing(self):
         time_now = datetime.datetime.now()
+        timestr = time_now.strftime("%c")
+
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
-        p.write("\nMain Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" + str(self.stars_numbers_list) + " " + str(time_now) + "\n")
+        p.write("\nMain Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" +
+                                         str(self.stars_numbers_list) + " " + timestr + "\n")
         print('\nMain Numbers {} \nLucky Stars * {}\n '.format(self.main_numbers_list, self.stars_numbers_list))
-        # print(time_now)
-#################################
-# Print to File, will print the lotto numbers to a File
-#  def ptf ():
-# ...     name = input("name > ")
-# ...     n = open("ptf.txt", 'a')
-# ...     n.write(name + "\n")
-#above was testing in powershell
-    def ptf(self):
-
-        pass
-
-
-
 
 
 #################################
-# this allows the app to work under one class
+# this allows the app to work under one class, with the above setup def
     def __init__(self):
         self.setup()
 
