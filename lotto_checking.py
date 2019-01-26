@@ -6,6 +6,9 @@ import datetime
 ### Working on this app as i dont trust the lotto's lucky dip, least this way I know its Truely random ###
 ### Needs alot of re-write due to it being not the best ###
 ### have re-wrote to create all under a class ###
+### Will add an email function, to email you your numbers if needed
+### will also add a sms function, to send sms with lotto Numbers
+
 
 class lotto:
 
