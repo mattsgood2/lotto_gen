@@ -1,5 +1,6 @@
 import random
 import datetime
+import smtplib, ssl
 ### randomly generates your euro lotto numbers
 ### need to add lucky stars to the end of the list, maybe with extend.
 ### added ability to create lucky stars
@@ -64,8 +65,25 @@ class lotto:
         p.write("\nMain Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" +
                                          str(self.stars_numbers_list) + " " + timestr + "\n")
         print('\nMain Numbers {} \nLucky Stars * {}\n '.format(self.main_numbers_list, self.stars_numbers_list))
+#################################
+# adding email setup
 
+# import smtplib, ssl
 
+# port = 465  # For SSL
+# smtp_server = "smtp.aol.com"
+# sender_email = "add email here"  # Enter your address
+# receiver_email = "add email here"  # Enter receiver address
+# password = input("Type your password and press enter: ")
+# message = """\
+# Subject: Hi there
+#
+# This message is sent from Python."""
+#
+# context = ssl.create_default_context()
+# with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+#     server.login(sender_email, password)
+#     server.sendmail(sender_email, receiver_email, message)
 #################################
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
