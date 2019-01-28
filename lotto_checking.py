@@ -23,6 +23,7 @@ class lotto:
         self.lotto_num()
         self.stars()
         self.printing()
+        self.sending_email_out()
 
     def lotto_num(self):
 # randomly creates lotto numbers, and if already in list will not duplicate them
@@ -65,26 +66,24 @@ class lotto:
         p.write("\nMain Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" +
                                          str(self.stars_numbers_list) + " " + timestr + "\n")
         print('\nMain Numbers {} \nLucky Stars * {}\n '.format(self.main_numbers_list, self.stars_numbers_list))
-#################################
-# adding email setup
 
-# import smtplib, ssl
+    def sending_email_out(self):
+        port = 465
+        smtp_server = "smtp.aol.com"
+        sender_email = "ADD EMAIL HERE"
+        receiver_email = "ADD EMAIL HERE"
+        password = input("Type Your Email Password: ")
+        message = """\
+Subject: Lotto_numbers are in !
 
-# port = 465  # For SSL
-# smtp_server = "smtp.aol.com"
-# sender_email = "add email here"  # Enter your address
-# receiver_email = "add email here"  # Enter receiver address
-# password = input("Type your password and press enter: ")
-# message = """\
-# Subject: Hi there
-#
-# This message is sent from Python."""
-#
-# context = ssl.create_default_context()
-# with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-#     server.login(sender_email, password)
-#     server.sendmail(sender_email, receiver_email, message)
-#################################
+These are your Euro numbers. """
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message)
+
+
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
         self.setup()
