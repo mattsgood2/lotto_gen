@@ -1,10 +1,16 @@
 import random
 import datetime
 import smtplib, ssl
+########################
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+
+########################
 ### randomly generates your euro lotto numbers
 ### need to add lucky stars to the end of the list, maybe with extend.
 ### added ability to create lucky stars
-### Working on this app as i dont trust the lotto's lucky dip, least this way I know its Truely random ###
+### Working on this app as I dont trust the lotto's lucky dip, least this way I know its Truely random ###
 ### Needs alot of re-write due to it being not the best ###
 ### have re-wrote to create all under a class ###
 ### Will add an email function, to email you your numbers if needed
@@ -85,11 +91,11 @@ These are your Euro numbers. """
 ##############################################
 # Adding Html to email with number of lotto
 #############################################
-# message = MIMEMultipart("alternative")
-# message["Subject"] = "multipart test"
-# message["From"] = sender_email
-# message["To"] = receiver_email
-#
+message = MIMEMultipart("alternative")
+message["Subject"] = "multipart test"
+message["From"] = sender_email
+message["To"] = receiver_email
+
 # # Create the plain-text and HTML version of your message
 # text = """\
 # Hi,
