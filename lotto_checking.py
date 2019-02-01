@@ -73,28 +73,43 @@ class lotto:
         print('\nMain Numbers {} \nLucky Stars * {}\n '.format(self.main_numbers_list, self.stars_numbers_list))
 
     def sending_email_out(self):
+
         port = 465
         smtp_server = "smtp.aol.com"
         sender_email = "ADD EMAIL HERE"
         receiver_email = "ADD EMAIL HERE"
         password = input("Type Your Email Password: ")
-        message = """\
-Subject: Lotto_numbers are in !
 
-These are your Euro numbers. """
+        message = MIMEMultipart("alternative")
+        message["Subject"] = "Matthew Goodman"
+        message["From"] = sender_email
+        message["To"] = receiver_email
+
+        html = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               How are you?<br>
+               <a href="http://www.matthew.com">Matt</a>
+               has many greats are called Matthew.
+            </p>
+          </body>
+        </html> """
+
+    part1 = MIMEText(text, "html")
 
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
             server.login(sender_email, password)
-            server.sendmail(sender_email, receiver_email, message)
+            server.sendmail(sender_email, receiver_email, message.as_string())
 
 ##############################################
 # Adding Html to email with number of lotto
 #############################################
-message = MIMEMultipart("alternative")
-message["Subject"] = "multipart test"
-message["From"] = sender_email
-message["To"] = receiver_email
+# message = MIMEMultipart("alternative")
+# message["Subject"] = "multipart test"
+# message["From"] = sender_email
+# message["To"] = receiver_email
 
 # # Create the plain-text and HTML version of your message
 # text = """\
