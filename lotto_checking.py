@@ -76,8 +76,8 @@ class lotto:
 
         port = 465
         smtp_server = "smtp.aol.com"
-        sender_email = "ADD EMAIL HERE"
-        receiver_email = "ADD EMAIL HERE"
+        sender_email = "ADD"
+        receiver_email = "ADD"
         password = input("Type Your Email Password: ")
 
         message = MIMEMultipart("alternative")
@@ -86,17 +86,18 @@ class lotto:
         message["To"] = receiver_email
 
         html = """\
-        <html>
-          <body>
-            <p>Hi,<br>
-               How are you?<br>
-               <a href="http://www.matthew.com">Matt</a>
-               has many greats are called Matthew.
-            </p>
-          </body>
-        </html> """
+            <html>
+              <body>
+                <p>Hi,<br>
+                   How are you?<br>
+                   <a href="http://www.matthew.com">The Matts</a>
+                   How many greats are called Matthew.
+                </p>
+              </body>
+            </html> """
 
-    part1 = MIMEText(text, "html")
+        part1 = MIMEText(html, "html")
+        message.attach(part1)
 
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
