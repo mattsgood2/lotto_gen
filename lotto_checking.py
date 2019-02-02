@@ -1,10 +1,12 @@
+import os
 import random
 import datetime
 import smtplib, ssl
 ########################
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
+from dotenv import load_dotenv
+load_dotenv()
 
 ########################
 ### randomly generates your euro lotto numbers
@@ -76,9 +78,10 @@ class lotto:
 
         port = 465
         smtp_server = "smtp.aol.com"
-        sender_email = "ADD"
-        receiver_email = "ADD"
-        password = input("Type Your Email Password: ")
+        sender_email = os.getenv("MYEMAIL")
+        receiver_email = os.getenv("PIMEMAIL")
+        password = os.getenv("PASSWORD")
+        # password = input("Type Your Email Password: ")
 
         message = MIMEMultipart("alternative")
         message["Subject"] = "Matthew Goodman"
