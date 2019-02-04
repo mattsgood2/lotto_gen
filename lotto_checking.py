@@ -5,6 +5,7 @@ import smtplib, ssl
 ########################
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from twilio.rest import Client
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -17,6 +18,12 @@ load_dotenv()
 ### have re-wrote to create all under a class ###
 ### Will add an email function, to email you your numbers if needed
 ### will also add a sms function, to send sms with lotto Numbers
+
+### Not account_sid
+# account_sid = 'AC361c9f44a26a8546c0f01a10b4e46d49' # dummie account_sid #
+# auth_token = 'your_auth_token'
+# client = Client(account_sid, auth_token)
+
 
 
 class lotto:
