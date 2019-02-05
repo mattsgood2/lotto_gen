@@ -93,17 +93,17 @@ class lotto:
         message["Subject"] = "Matthew Goodman"
         message["From"] = sender_email
         message["To"] = receiver_email
-
+        # message["main_numbers_list_1"] = self.main_numbers_list
         html = """\
             <html>
               <body>
-                <p>Hi,<br>
+                <p>Hi {},<br>
                    How are you?<br>
                    <a href="http://www.matthew.com">The Matts</a>
                    How many greats are called Matthew.
                 </p>
               </body>
-            </html> """
+            </html> """.format(self.main_numbers_list)
 
         part1 = MIMEText(html, "html")
         message.attach(part1)
