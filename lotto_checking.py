@@ -40,6 +40,7 @@ class lotto:
         self.sending_email_out()
 
     def lotto_num(self):
+###need to get strip working as having issues at the moment
 # randomly creates lotto numbers, and if already in list will not duplicate them
         if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
             while True:
@@ -104,7 +105,7 @@ class lotto:
                 </p>
               </body>
             </html> """.format(self.main_numbers_list)
-
+# must strip [] from around numbers and format the message better
         part1 = MIMEText(html, "html")
         message.attach(part1)
 
