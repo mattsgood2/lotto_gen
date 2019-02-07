@@ -77,6 +77,9 @@ class lotto:
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
 
+        # for i in self.main_numbers_list:
+        #     print(f"your nums are {i} ")
+
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         p.write("\nMain Numbers" + "-" + str(self.main_numbers_list) + "-" + "Lucky Stars" +
                                          str(self.stars_numbers_list) + " " + timestr + "\n")
