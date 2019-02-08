@@ -89,10 +89,7 @@ class lotto:
                                                     main_n_str.strip('[]'),
                                                     stars_n_str.strip('[]'))
                                                     )
-        # print(self.main_numbers_list)
 
-
-    # def sending_email_out(self):
         port = 465
         smtp_server = "smtp.aol.com"
         sender_email = os.getenv("MYEMAIL")
@@ -108,13 +105,15 @@ class lotto:
         html = """\
             <html>
               <body>
-                <p>Hi {},<br>
-                   How are you?<br>
+                <p>This weeks Lotto Numbers Are <br>
+                  {},<br>
+                <p>Lucky Stars {},<br>
+                   Good Luck <br>
                    <a href="http://www.matthew.com">The Matts</a>
                    How many greats are called Matthew.
                 </p>
               </body>
-            </html> """.format(main_n_str.strip('[]'))
+            </html> """.format(main_n_str.strip('[]'), stars_n_str.strip('[]'))
 # must strip [] from around numbers and format the message better
         part1 = MIMEText(html, "html")
         message.attach(part1)
