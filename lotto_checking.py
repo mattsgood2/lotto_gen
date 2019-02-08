@@ -82,8 +82,6 @@ class lotto:
         stars_n_str = str(self.stars_numbers_list)
         print(stars_n_str.strip('[]'))
 
-
-
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
@@ -94,37 +92,37 @@ class lotto:
         # print(self.main_numbers_list)
 
 
-#     def sending_email_out(self):
-#         port = 465
-#         smtp_server = "smtp.aol.com"
-#         sender_email = os.getenv("MYEMAIL")
-#         receiver_email = os.getenv("PIMEMAIL")
-#         password = os.getenv("PASSWORD")
-#         # password = input("Type Your Email Password: ")
-#
-#         message = MIMEMultipart("alternative")
-#         message["Subject"] = "Matthew Goodman"
-#         message["From"] = sender_email
-#         message["To"] = receiver_email
-#         # message["main_numbers_list_1"] = self.main_numbers_list
-#         html = """\
-#             <html>
-#               <body>
-#                 <p>Hi {},<br>
-#                    How are you?<br>
-#                    <a href="http://www.matthew.com">The Matts</a>
-#                    How many greats are called Matthew.
-#                 </p>
-#               </body>
-#             </html> """.format(self.main_numbers_list)
-# # must strip [] from around numbers and format the message better
-#         part1 = MIMEText(html, "html")
-#         message.attach(part1)
-#
-#         context = ssl.create_default_context()
-#         with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-#             server.login(sender_email, password)
-#             server.sendmail(sender_email, receiver_email, message.as_string())
+    # def sending_email_out(self):
+        port = 465
+        smtp_server = "smtp.aol.com"
+        sender_email = os.getenv("MYEMAIL")
+        receiver_email = os.getenv("PIMEMAIL")
+        password = os.getenv("PASSWORD")
+        # password = input("Type Your Email Password: ")
+
+        message = MIMEMultipart("alternative")
+        message["Subject"] = "Matthew Goodman"
+        message["From"] = sender_email
+        message["To"] = receiver_email
+        # message["main_numbers_list_1"] = self.main_numbers_list
+        html = """\
+            <html>
+              <body>
+                <p>Hi {},<br>
+                   How are you?<br>
+                   <a href="http://www.matthew.com">The Matts</a>
+                   How many greats are called Matthew.
+                </p>
+              </body>
+            </html> """.format(main_n_str.strip('[]'))
+# must strip [] from around numbers and format the message better
+        part1 = MIMEText(html, "html")
+        message.attach(part1)
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
 
 #send sms with lotto numbers
     def send_sms(self):
