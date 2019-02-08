@@ -77,19 +77,6 @@ class lotto:
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
 
-        # nums = self.main_numbers_list
-        # for i in nums:
-        #     a = str(i)
-        #     print(a)
-
-        # for i in self.main_numbers_list:
-        #     print(f"your nums are {i} ")
-
-        # a = self.main_numbers_list
-        # print (a.strip())
-        # main_n = self.main_numbers_list
-        # n = main_n.strip(main_n)
-
         main_n_str = str(self.main_numbers_list)
         print(main_n_str.strip('[]'))
         stars_n_str = str(self.stars_numbers_list)
@@ -100,8 +87,12 @@ class lotto:
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         p.write("\nMain Numbers" + "-" + main_n_str.strip('[]') + "-" + "Lucky Stars" +
                                          stars_n_str.strip('[]') + " " + timestr + "\n")
-        print('\nMain Numbers {} \nLucky Stars * {}\n '.format(main_n_str.strip('[]'), stars_n_str.strip('[]')))
+        print('\nMain Numbers {} \nLucky Stars * {}\n '.format(
+                                                    main_n_str.strip('[]'),
+                                                    stars_n_str.strip('[]'))
+                                                    )
         # print(self.main_numbers_list)
+
 
 #     def sending_email_out(self):
 #         port = 465
