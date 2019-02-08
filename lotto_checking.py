@@ -85,8 +85,8 @@ class lotto:
 
 
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
-        p.write("\nMain Numbers" + "-" + main_n_str.strip('[]') + "-" + "Lucky Stars" +
-                                         stars_n_str.strip('[]') + " " + timestr + "\n")
+        p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+                                         stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
         print('\nMain Numbers {} \nLucky Stars * {}\n '.format(
                                                     main_n_str.strip('[]'),
                                                     stars_n_str.strip('[]'))
