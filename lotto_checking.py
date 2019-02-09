@@ -36,7 +36,7 @@ class lotto:
     def setup(self):
         self.lotto_num()
         self.stars()
-        self.printing()
+        self.print_email()
         # self.sending_email_out()
 
     def lotto_num(self):
@@ -52,33 +52,32 @@ class lotto:
 
                 if len(self.main_numbers_list) == 5:
                     return self.main_numbers_list
-                    break
+                    # break
 
 # checks and randomly creates lucky star Numbers ##
     def stars(self):
+    # if input('\nWould You like some Lucky Stars ? --> [Y]es or [N]o ') == 'y'.lower():
+        while True:
+            star = random.choice(self.stars_numbers)
 
-        if input('\nWould You like some Lucky Stars ? --> [Y]es or [N]o ') == 'y'.lower():
-            while True:
-                star = random.choice(self.stars_numbers)
+            if star not in self.stars_numbers_list:
+                self.stars_numbers_list.append(star)
 
-                if star not in self.stars_numbers_list:
-                    self.stars_numbers_list.append(star)
+            self.stars_numbers_list.sort()
 
-                self.stars_numbers_list.sort()
-
-                if len(self.stars_numbers_list) == 2:
-                    return self.stars_numbers_list
-                    break
+            if len(self.stars_numbers_list) == 2:
+                return self.stars_numbers_list
+                    # break
 # prints all the main and Lucky stars umbers and formats them nicely
 
-    def printing(self):
+    def print_email(self):
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
 
         main_n_str = str(self.main_numbers_list)
-        print(main_n_str.strip('[]'))
+        # print(main_n_str.strip('[]'))
         stars_n_str = str(self.stars_numbers_list)
-        print(stars_n_str.strip('[]'))
+        # print(stars_n_str.strip('[]'))
 
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
@@ -96,7 +95,7 @@ class lotto:
         # password = input("Type Your Email Password: ")
 
         message = MIMEMultipart("alternative")
-        message["Subject"] = "Matthew Goodman"
+        message["Subject"] = "Lotto Numbers"
         message["From"] = sender_email
         message["To"] = receiver_email
 
@@ -107,7 +106,7 @@ class lotto:
                   {},<br>
                 <p>Lucky Stars {},<br>
                    Good Luck <br>
-                   <a href="http://www.matthew.com">The Matts</a>
+                   <a href="https://github.com/mattsgood2">The Matts</a>
                    How many greats are called Matthew.
                 </p>
               </body>
