@@ -40,7 +40,6 @@ class lotto:
         # self.sending_email_out()
 
     def lotto_num(self):
-###need to get strip working as having issues at the moment
 # randomly creates lotto numbers, and if already in list will not duplicate them
         if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
             while True:
@@ -71,8 +70,7 @@ class lotto:
                     return self.stars_numbers_list
                     break
 # prints all the main and Lucky stars umbers and formats them nicely
-# going to add function to write to file to keep track of lotto numbers drawn
-# also will add datetime to show when numbers were drawn
+
     def printing(self):
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
@@ -101,7 +99,7 @@ class lotto:
         message["Subject"] = "Matthew Goodman"
         message["From"] = sender_email
         message["To"] = receiver_email
-        # message["main_numbers_list_1"] = self.main_numbers_list
+
         html = """\
             <html>
               <body>
@@ -114,7 +112,7 @@ class lotto:
                 </p>
               </body>
             </html> """.format(main_n_str.strip('[]'), stars_n_str.strip('[]'))
-# must strip [] from around numbers and format the message better
+
         part1 = MIMEText(html, "html")
         message.attach(part1)
 
