@@ -42,6 +42,7 @@ class lotto:
     def lotto_num(self):
 # randomly creates lotto numbers, and if already in list will not duplicate them
         if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
+            # counter = 5
             while True:
                 main = random.choice(self.main_numbers)
 
@@ -87,38 +88,44 @@ class lotto:
                                                     stars_n_str.strip('[]'))
                                                     )
 
-        port = 465
-        smtp_server = "smtp.aol.com"
-        sender_email = os.getenv("MYEMAIL")
-        receiver_email = os.getenv("PIMEMAIL")
-        password = os.getenv("PASSWORD")
-        # password = input("Type Your Email Password: ")
+        email = input("Email Me [Y]es or [N]o")
+        if email == "y":
+            print("Email Sent")
+            port = 465
+            smtp_server = "smtp.aol.com"
+            sender_email = os.getenv("MYEMAIL")
+            receiver_email = os.getenv("PIMEMAIL")
+            password = os.getenv("PASSWORD")
+            # password = input("Type Your Email Password: ")
 
-        message = MIMEMultipart("alternative")
-        message["Subject"] = "Lotto Numbers"
-        message["From"] = sender_email
-        message["To"] = receiver_email
+            message = MIMEMultipart("alternative")
+            message["Subject"] = "Lotto Numbers"
+            message["From"] = sender_email
+            message["To"] = receiver_email
 
-        html = """\
-            <html>
-              <body>
-                <p>This weeks Lotto Numbers Are <br>
-                  {},<br>
-                <p>Lucky Stars {},<br>
-                   Good Luck <br>
-                   <a href="https://github.com/mattsgood2">The Matts</a>
-                   How many greats are called Matthew.
-                </p>
-              </body>
-            </html> """.format(main_n_str.strip('[]'), stars_n_str.strip('[]'))
+            html = """\
+                <html>
+                  <body>
+                    <p>This weeks Lotto Numbers Are <br>
+                      {},<br>
+                    <p>Lucky Stars {},<br>
+                       Good Luck <br>
+                       <a href="https://github.com/mattsgood2">The Matts</a>
+                       How many greats are called Matthew.
+                    </p>
+                  </body>
+                </html> """.format(main_n_str.strip('[]'), stars_n_str.strip('[]'))
 
-        part1 = MIMEText(html, "html")
-        message.attach(part1)
+            part1 = MIMEText(html, "html")
+            message.attach(part1)
 
-        context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-            server.login(sender_email, password)
-            server.sendmail(sender_email, receiver_email, message.as_string())
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+                server.login(sender_email, password)
+                server.sendmail(sender_email, receiver_email, message.as_string())
+        if email == "n":
+            print("EXit")
+
 
 #send sms with lotto numbers
     def send_sms(self):
