@@ -69,7 +69,7 @@ class lotto:
                 return self.stars_numbers_list
                     # break
 # prints all the main and Lucky stars umbers and formats them nicely
-
+###  Give opton to send email if wanted! ###
     def print_email(self):
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
