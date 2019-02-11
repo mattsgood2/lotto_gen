@@ -41,8 +41,13 @@ class lotto:
 
     def lotto_num(self):
 # randomly creates lotto numbers, and if already in list will not duplicate them
-        if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
-            # counter = 5
+# Need to add better options on input
+        yes_no = input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
+        # if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
+        if yes_no == "n":
+            print("goodbye !")
+
+        elif yes_no == "y":
             while True:
                 main = random.choice(self.main_numbers)
 
@@ -88,7 +93,7 @@ class lotto:
                                                     stars_n_str.strip('[]'))
                                                     )
 
-        email = input("Email Me [Y]es or [N]o")
+        email = input("Email Me [Y]es or [N]o > ")
         if email == "y":
             print("Email Sent")
             port = 465
@@ -123,8 +128,8 @@ class lotto:
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
                 server.login(sender_email, password)
                 server.sendmail(sender_email, receiver_email, message.as_string())
-        if email == "n":
-            print("EXit")
+        elif email == "n":
+            print("Write Them Down ! ")
 
 
 #send sms with lotto numbers
