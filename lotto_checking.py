@@ -43,11 +43,9 @@ class lotto:
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
         yes_no = input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
-        # if input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ') == 'y'.lower():
-        if yes_no == "n":
-            print("goodbye !")
-
-        elif yes_no == "y":
+        # if yes_no == "n":
+        #     print("goodbye !")
+        # elif yes_no == "y":
             while True:
                 main = random.choice(self.main_numbers)
 
