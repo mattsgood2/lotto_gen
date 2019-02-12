@@ -1,3 +1,4 @@
+import sys
 import os
 import random
 import datetime
@@ -43,24 +44,23 @@ class lotto:
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
         yes_no = input('\nWould you like to Randomly Gen Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
-        # if yes_no == "n":
-        #     print("goodbye !")
-        # elif yes_no == "y":
-            while True:
-                main = random.choice(self.main_numbers)
+        if yes_no == "n":
+            print("GOODBYE")
+            sys.exit()
 
-                if main not in self.main_numbers_list:
-                    self.main_numbers_list.append(main)
+        while True:
+            main = random.choice(self.main_numbers)
 
-                self.main_numbers_list.sort()
+            if main not in self.main_numbers_list:
+                self.main_numbers_list.append(main)
 
-                if len(self.main_numbers_list) == 5:
-                    return self.main_numbers_list
-                    # break
+            self.main_numbers_list.sort()
+
+            if len(self.main_numbers_list) == 5:
+                return self.main_numbers_list
 
 # checks and randomly creates lucky star Numbers ##
     def stars(self):
-    # if input('\nWould You like some Lucky Stars ? --> [Y]es or [N]o ') == 'y'.lower():
         while True:
             star = random.choice(self.stars_numbers)
 
@@ -71,7 +71,7 @@ class lotto:
 
             if len(self.stars_numbers_list) == 2:
                 return self.stars_numbers_list
-                    # break
+
 # prints all the main and Lucky stars umbers and formats them nicely
 ###  Give opton to send email if wanted! ###
     def print_email(self):
