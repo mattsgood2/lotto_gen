@@ -132,7 +132,7 @@ class lotto:
                 server.login(sender_email, password)
                 server.sendmail(sender_email, receiver_email, message.as_string())
         elif email == "n":
-            print("Write Them Down ! ")
+            print("\n   **! Write Them Down !** \n")
 
 
 #send sms with lotto numbers
