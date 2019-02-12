@@ -35,7 +35,8 @@ class lotto:
 
 # sets up the app to run as one unit
     def setup(self):
-        self.lotto_num()
+        self.start_me()
+        # self.lotto_num()
         self.stars()
         self.print_email()
         # self.sending_email_out()
@@ -43,7 +44,7 @@ class lotto:
 
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
-    def lotto_num(self):
+    def start_me(self):
         yes_no = input('\nGenerate Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
 
         if yes_no == "n":
