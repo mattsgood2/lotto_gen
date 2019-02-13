@@ -25,6 +25,19 @@ load_dotenv()
 # auth_token = 'your_auth_token'
 # client = Client(account_sid, auth_token)
 
+# checks and randomly creates lucky star Numbers ##
+def stars(self):
+    while True:
+        star = random.choice(self.stars_numbers)
+
+        if star not in self.stars_numbers_list:
+            self.stars_numbers_list.append(star)
+
+        self.stars_numbers_list.sort()
+
+        if len(self.stars_numbers_list) == 2:
+            return self.stars_numbers_list
+
 
 
 class lotto:
@@ -37,7 +50,7 @@ class lotto:
     def setup(self):
         self.start_me()
         # self.lotto_num()
-        self.stars()
+        # self.stars()
         self.print_email()
         # self.sending_email_out()
 
@@ -64,18 +77,18 @@ class lotto:
                 if len(self.main_numbers_list) == 5:
                     return self.main_numbers_list
 
-# checks and randomly creates lucky star Numbers ##
-    def stars(self):
-        while True:
-            star = random.choice(self.stars_numbers)
-
-            if star not in self.stars_numbers_list:
-                self.stars_numbers_list.append(star)
-
-            self.stars_numbers_list.sort()
-
-            if len(self.stars_numbers_list) == 2:
-                return self.stars_numbers_list
+# # checks and randomly creates lucky star Numbers ##
+#     def stars(self):
+#         while True:
+#             star = random.choice(self.stars_numbers)
+#
+#             if star not in self.stars_numbers_list:
+#                 self.stars_numbers_list.append(star)
+#
+#             self.stars_numbers_list.sort()
+#
+#             if len(self.stars_numbers_list) == 2:
+#                 return self.stars_numbers_list
 
 # prints all the main and Lucky stars umbers and formats them nicely
 ###  Give opton to send email if wanted! ###
@@ -131,7 +144,7 @@ class lotto:
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
                 server.login(sender_email, password)
                 server.sendmail(sender_email, receiver_email, message.as_string())
-        elif email == "n":
+        elif mail == "n":
             print("\n   **! Write Them Down !** \n")
 
 
