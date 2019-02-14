@@ -25,20 +25,6 @@ load_dotenv()
 # auth_token = 'your_auth_token'
 # client = Client(account_sid, auth_token)
 
-# checks and randomly creates lucky star Numbers ##
-# def stars(self):
-#     while True:
-#         star = random.choice(self.stars_numbers)
-#
-#         if star not in self.stars_numbers_list:
-#             self.stars_numbers_list.append(star)
-#
-#         self.stars_numbers_list.sort()
-#
-#         if len(self.stars_numbers_list) == 2:
-#             return self.stars_numbers_list
-
-
 
 class lotto:
     main_numbers_list = []
@@ -58,6 +44,7 @@ class lotto:
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
     def start_me(self):
+        # try:
         yes_no = input('\nGenerate Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
 
         if yes_no == "n":
