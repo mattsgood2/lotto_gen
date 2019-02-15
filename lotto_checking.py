@@ -46,7 +46,7 @@ class lotto:
     def start_me(self):
         # try:
         yes_no = input('\nGenerate Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
-
+### need to add try except for input ###
         if yes_no == "n":
             print("GOODBYE")
             sys.exit()
@@ -138,7 +138,19 @@ class lotto:
 
 #send sms with lotto numbers
     def send_sms(self):
-        pass
+        # account_sid = os.getenv[""]
+        # auth_token = os.getenv["your_auth_token"]
+        # client = Client(account_sid, auth_token)
+        #
+        # message = client.messages \
+        #                 .create(
+        #                      body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+        #                      from_='+15017122661',
+        #                      to='+15558675310'
+        #                  )
+        #
+        # print(message.sid)
+                pass
 
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
