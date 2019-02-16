@@ -137,20 +137,21 @@ class lotto:
 
 
 #send sms with lotto numbers
-    def send_sms(self):
-        # account_sid = os.getenv[""]
-        # auth_token = os.getenv["your_auth_token"]
-        # client = Client(account_sid, auth_token)
-        #
-        # message = client.messages \
-        #                 .create(
-        #                      body="Join Earth's mightiest heroes. Like Kevin Bacon.",
-        #                      from_='+15017122661',
-        #                      to='+15558675310'
-        #                  )
-        #
-        # print(message.sid)
-                pass
+    # def send_sms(self):
+    #     account_sid = os.getenv["my sid from env"]
+    #     auth_token = os.getenv["my auth token from env"]
+    #     client = Client(account_sid, auth_token)
+    #
+    #     message = client.messages \
+    #                     .create(
+    #                          body="Lotto Numbers are {}, Lucky Stars {}".format(self.main_numbers_list,
+    #                                                                             self.stars_numbers_list),
+    #                          from_='+15017122661',
+    #                          to='+15558675310'
+    #                      )
+    #
+    #     print(message.sid)
+            pass
 
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
