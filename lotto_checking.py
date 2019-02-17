@@ -20,11 +20,6 @@ load_dotenv()
 ### Will add an email function, to email you your numbers if needed
 ### will also add a sms function, to send sms with lotto Numbers
 
-### Not account_sid
-# account_sid = 'AC361c9f44a26a8546c0f01a10b4e46d49' # dummie account_sid #
-# auth_token = 'your_auth_token'
-# client = Client(account_sid, auth_token)
-
 
 class lotto:
     main_numbers_list = []
@@ -137,20 +132,20 @@ class lotto:
 
 
 #send sms with lotto numbers
-    # def send_sms(self):
-    #     account_sid = os.getenv["my sid from env"]
-    #     auth_token = os.getenv["my auth token from env"]
-    #     client = Client(account_sid, auth_token)
-    #
-    #     message = client.messages \
-    #                     .create(
-    #                          body="Lotto Numbers are {}, Lucky Stars {}".format(self.main_numbers_list,
-    #                                                                             self.stars_numbers_list),
-    #                          from_='+15017122661',
-    #                          to='+15558675310'
-    #                      )
-    #
-    #     print(message.sid)
+    def send_sms(self):
+        account_sid = os.getenv["ACCOUNT_SID"]
+        auth_token = os.getenv["AUTH_TOKEN"]
+        client = Client(account_sid, auth_token)
+
+        message = client.messages \
+                        .create(
+                             body="Lotto Numbers are {}, Lucky Stars {}".format(self.main_numbers_list,
+                                                                                self.stars_numbers_list),
+                             from_='+15017122661',
+                             to='+15558675310'
+                         )
+
+        print(message.sid)
             pass
 
 # this allows the app to work under one class, with the above setup def
