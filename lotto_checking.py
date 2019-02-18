@@ -139,18 +139,22 @@ class lotto:
 
 #send sms with lotto numbers
     def send_sms(self):
-        account_sid = os.getenv("TWIL_ACCOUNT_SID")
-        auth_token = os.getenv("TWIL_AUTH_TOKEN")
-        client = Client(account_sid, auth_token)
+        send_sms = input("SEND SMS ? [Y] or [N]" ).lower()
+        if send_sms == "y":
+            print("SMS SEND !")
+            account_sid = os.getenv("TWIL_ACCOUNT_SID")
+            auth_token = os.getenv("TWIL_AUTH_TOKEN")
+            client = Client(account_sid, auth_token)
 
-        message = client.messages \
-                        .create(
-                             body="Lotto Numbers are {}, Lucky Stars {}".format(self.main_numbers_list,
-                                                                                self.stars_numbers_list),
-                             from_= os.getenv("TWILIO_NUMBER"),
-                             to= os.getenv("MY_NUMBER")
+            message = client.messages \
+                            .create(
+                                 body="Lotto Numbers are {}, Lucky Stars {}".format(self.main_numbers_list,
+                                                                                    self.stars_numbers_list),
+                                 from_= os.getenv("TWILIO_NUMBER"),
+                                 to= os.getenv("MY_NUMBER")
                          )
-
+        elif send_sms == "n":
+            print("GOOD LUCK")
         # print(message.sid)
             # pass
 
