@@ -20,6 +20,11 @@ load_dotenv()
 ### Will add an email function, to email you your numbers if needed
 ### will also add a sms function, to send sms with lotto Numbers
 
+### Not account_sid
+# account_sid = 'AC361c9f44a26a8546c0f01a10b4e46d49' # dummie account_sid #
+# auth_token = 'your_auth_token'
+# client = Client(account_sid, auth_token)
+
 
 class lotto:
     main_numbers_list = []
@@ -33,6 +38,7 @@ class lotto:
         # self.lotto_num()
         self.stars()
         self.print_email()
+        self.send_sms()
         # self.sending_email_out()
 
 
@@ -132,29 +138,21 @@ class lotto:
 
 
 #send sms with lotto numbers
-    # def send_sms(self):
-        send_sms = input("Send me a Text ? [Y],[N]")
-        if send_sms == "y":
-            print("SENT SMS")
-            account_sid = os.getenv["ACCOUNT_SID"]
-            auth_token = os.getenv["AUTH_TOKEN"]
-            client = Client(account_sid, auth_token)
+    def send_sms(self):
+        account_sid = os.getenv("TWIL_ACCOUNT_SID")
+        auth_token = os.getenv("TWIL_AUTH_TOKEN")
+        client = Client(account_sid, auth_token)
 
-            body = "Hi your lotto numbers are {0} Lucky Stars {1} today ".format(self.main_numbers_list,
-                                                                        self.stars_numbers_list)
+        message = client.messages \
+                        .create(
+                             body="Lotto Numbers are {}, Lucky Stars {}".format(self.main_numbers_list,
+                                                                                self.stars_numbers_list),
+                             from_= os.getenv("TWILIO_NUMBER"),
+                             to= os.getenv("MY_NUMBER")
+                         )
 
-            message = client.messages.create(
-                body = body,
-                to =os.environ['MY_NUMBER'], #Should be reservation.phone_number,
-                from_ = os.environ['TWILIO_NUMBER'],
-            )
-        else:
-            sys.exit()
         # print(message.sid)
             # pass
-
-
-
 
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
