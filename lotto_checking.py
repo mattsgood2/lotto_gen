@@ -132,22 +132,22 @@ class lotto:
 
 
 #send sms with lotto numbers
-    # def send_sms(self):
-    #     account_sid = os.getenv["ACCOUNT_SID"]
-    #     auth_token = os.getenv["AUTH_TOKEN"]
-    #     client = Client(account_sid, auth_token)
-    #
-    #     body = "Hi your lotto numbers are {0} Lucky Stars {1} today ".format(self.main_numbers_list,
-    #                                                                 self.stars_numbers_list)
-    #
-    #     message = client.messages.create(
-    #         body = body,
-    #         to =os.environ['MY_NUMBER'], #Should be reservation.phone_number,
-    #         from_ = os.environ['TWILIO_NUMBER'],
-    #     )
-    #
-    #     # print(message.sid)
-    #         pass
+    def send_sms(self):
+        account_sid = os.getenv["ACCOUNT_SID"]
+        auth_token = os.getenv["AUTH_TOKEN"]
+        client = Client(account_sid, auth_token)
+
+        body = "Hi your lotto numbers are {0} Lucky Stars {1} today ".format(self.main_numbers_list,
+                                                                    self.stars_numbers_list)
+
+        message = client.messages.create(
+            body = body,
+            to =os.environ['MY_NUMBER'], #Should be reservation.phone_number,
+            from_ = os.environ['TWILIO_NUMBER'],
+        )
+
+        # print(message.sid)
+            # pass
 
 
 
