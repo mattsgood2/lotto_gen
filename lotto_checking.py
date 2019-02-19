@@ -10,21 +10,8 @@ from twilio.rest import Client
 from dotenv import load_dotenv
 load_dotenv()
 
-########################
 ### randomly generates your euro lotto numbers
-### need to add lucky stars to the end of the list, maybe with extend.
-### added ability to create lucky stars
 ### Working on this app as I dont trust the lotto's lucky dip, least this way I know its Truely random ###
-### Needs alot of re-write due to it being not the best ###
-### have re-wrote to create all under a class ###
-### Will add an email function, to email you your numbers if needed
-### will also add a sms function, to send sms with lotto Numbers
-
-### Not account_sid
-# account_sid = 'AC361c9f44a26a8546c0f01a10b4e46d49' # dummie account_sid #
-# auth_token = 'your_auth_token'
-# client = Client(account_sid, auth_token)
-
 
 class lotto:
     main_numbers_list = []
@@ -59,7 +46,6 @@ class lotto:
 
                 if len(self.main_numbers_list) == 5:
                     return self.main_numbers_list
-
 
 # checks and randomly creates lucky star Numbers ##
     def stars(self):
@@ -132,7 +118,7 @@ class lotto:
             print("\n   **! Write Them Down !** \n")
 
 #send sms with lotto numbers
-        send_sms = input("SEND SMS ? [Y] or [N]" ).lower()
+        send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
         if send_sms == "y":
             print("SMS SEND !")
             account_sid = os.getenv("TWIL_ACCOUNT_SID")
@@ -148,14 +134,11 @@ class lotto:
                          )
         elif send_sms == "n":
             print("GOOD LUCK")
-        # print(message.sid)
-            # pass
 
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
         self.setup()
 
-### TODO make function for str main and stars to use globally ###
 
 # calls the app to start
 lotto()
