@@ -35,19 +35,14 @@ class lotto:
 # sets up the app to run as one unit
     def setup(self):
         self.start_me()
-        # self.lotto_num()
         self.stars()
-        self.print_email()
-        self.send_sms()
-        # self.sending_email_out()
-
+        self.print_email_sms()
 
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
     def start_me(self):
-        # try:
         yes_no = input('\nGenerate Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
-### need to add try except for input ###
+
         if yes_no == "n":
             print("GOODBYE")
             sys.exit()
@@ -81,7 +76,7 @@ class lotto:
 
 # prints all the main and Lucky stars umbers and formats them nicely
 ###  Give opton to send email if wanted! ###
-    def print_email(self):
+    def print_email_sms(self):
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
 
@@ -136,9 +131,7 @@ class lotto:
         elif email == "n":
             print("\n   **! Write Them Down !** \n")
 
-
 #send sms with lotto numbers
-    def send_sms(self):
         send_sms = input("SEND SMS ? [Y] or [N]" ).lower()
         if send_sms == "y":
             print("SMS SEND !")
@@ -148,8 +141,8 @@ class lotto:
 
             message = client.messages \
                             .create(
-                                 body="Lotto Numbers are {}, Lucky Stars {}".format(self.main_numbers_list,
-                                                                                    self.stars_numbers_list),
+                                 body="Lotto Numbers are {}, Lucky Stars {}".format(main_n_str.strip('[]'),
+                                                                                    stars_n_str.strip('[]')),
                                  from_= os.getenv("TWILIO_NUMBER"),
                                  to= os.getenv("MY_NUMBER")
                          )
@@ -161,6 +154,8 @@ class lotto:
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
         self.setup()
+
+### TODO make function for str main and stars to use globally ###
 
 # calls the app to start
 lotto()
