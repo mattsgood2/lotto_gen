@@ -74,10 +74,7 @@ class lotto:
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
-        print('\nMain Numbers {} \nLucky Stars * {}\n '.format(
-                                                    main_n_str.strip('[]'),
-                                                    stars_n_str.strip('[]'))
-                                                    )
+        print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 ### try print(f'{account:40s} ({ratio:3.2f}) -> AUD {splitAmount}') ###
 
         email = input("Email Me [Y]es or [N]o > ")
@@ -88,7 +85,8 @@ class lotto:
             sender_email = os.getenv("MYEMAIL")
             # receiver_email = os.getenv("PIMEMAIL")
             receiver_email = input("Enter Email > ")
-            print("Email Sent to ")
+            # print("Email Sent to ")
+            print(f'Email Sent to {receiver_email} Check Spam ! ')
             password = os.getenv("PASSWORD")
             # password = input("Type Your Email Password: ")
 
