@@ -75,7 +75,6 @@ class lotto:
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
         print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
-### try print(f'{account:40s} ({ratio:3.2f}) -> AUD {splitAmount}') ###
 
         email = input("Email Me [Y]es or [N]o > ")
         if email == "y":
@@ -128,13 +127,13 @@ class lotto:
 
             message = client.messages \
                             .create(
-                                 body="Lotto Numbers are {}, Lucky Stars {}".format(main_n_str.strip('[]'),
-                                                                                    stars_n_str.strip('[]')),
+                                 body=f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}',
                                  from_= os.getenv("TWILIO_NUMBER"),
                                  to= os.getenv("MY_NUMBER"),
                                  # to= input("Enter Number > ")
 
                          )
+### ADD BODY MESSAGE TO OWN MESSAGE ###
         elif send_sms == "n":
             print("GOOD LUCK")
 
