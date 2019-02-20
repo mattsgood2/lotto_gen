@@ -78,6 +78,7 @@ class lotto:
                                                     main_n_str.strip('[]'),
                                                     stars_n_str.strip('[]'))
                                                     )
+### try print(f'{account:40s} ({ratio:3.2f}) -> AUD {splitAmount}') ###
 
         email = input("Email Me [Y]es or [N]o > ")
         if email == "y":
@@ -87,7 +88,7 @@ class lotto:
             sender_email = os.getenv("MYEMAIL")
             # receiver_email = os.getenv("PIMEMAIL")
             receiver_email = input("Enter Email > ")
-            print("Email Sent")
+            print("Email Sent to ")
             password = os.getenv("PASSWORD")
             # password = input("Type Your Email Password: ")
 
