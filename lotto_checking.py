@@ -81,11 +81,13 @@ class lotto:
 
         email = input("Email Me [Y]es or [N]o > ")
         if email == "y":
-            print("Email Sent")
+            # print("Email Sent")
             port = 465
             smtp_server = "smtp.aol.com"
             sender_email = os.getenv("MYEMAIL")
-            receiver_email = os.getenv("PIMEMAIL")
+            # receiver_email = os.getenv("PIMEMAIL")
+            receiver_email = input("Enter Email > ")
+            print("Email Sent")
             password = os.getenv("PASSWORD")
             # password = input("Type Your Email Password: ")
 
@@ -130,7 +132,9 @@ class lotto:
                                  body="Lotto Numbers are {}, Lucky Stars {}".format(main_n_str.strip('[]'),
                                                                                     stars_n_str.strip('[]')),
                                  from_= os.getenv("TWILIO_NUMBER"),
-                                 to= os.getenv("MY_NUMBER")
+                                 to= os.getenv("MY_NUMBER"),
+                                 # to= input("Enter Number > ")
+
                          )
         elif send_sms == "n":
             print("GOOD LUCK")
