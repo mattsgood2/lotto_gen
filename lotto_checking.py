@@ -109,6 +109,8 @@ class lotto:
 
             part1 = MIMEText(html, "html")
             message.attach(part1)
+            # f'{main_n_str.strip("[]")},{stars_n_str.strip("[]")}'
+
 
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
@@ -120,7 +122,7 @@ class lotto:
 #send sms with lotto numbers
         send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
         if send_sms == "y":
-            print("SMS SEND !")
+            print("SMS SENT !")
             account_sid = os.getenv("TWIL_ACCOUNT_SID")
             auth_token = os.getenv("TWIL_AUTH_TOKEN")
             client = Client(account_sid, auth_token)
