@@ -125,15 +125,18 @@ class lotto:
             auth_token = os.getenv("TWIL_AUTH_TOKEN")
             client = Client(account_sid, auth_token)
 
+            body = f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}'
+
             message = client.messages \
                             .create(
-                                 body=f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}',
+                                 body= body,
                                  from_= os.getenv("TWILIO_NUMBER"),
                                  to= os.getenv("MY_NUMBER"),
                                  # to= input("Enter Number > ")
 
                          )
 ### ADD BODY MESSAGE TO OWN MESSAGE ###
+### ADD TESTS TO THIS ! ###
         elif send_sms == "n":
             print("GOOD LUCK")
 
