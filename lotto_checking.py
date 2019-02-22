@@ -85,7 +85,7 @@ class lotto:
             # receiver_email = os.getenv("PIMEMAIL")
             receiver_email = input("Enter Email > ")
             # print("Email Sent to ")
-            print(f'\nEmail Sent to {receiver_email} Check Spam ! ')
+            print(f'\nEmail Sent to {receiver_email}\nCheck Spam ! ')
             password = os.getenv("PASSWORD")
             # password = input("Type Your Email Password: ")
 
