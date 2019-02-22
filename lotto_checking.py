@@ -85,7 +85,7 @@ class lotto:
             # receiver_email = os.getenv("PIMEMAIL")
             receiver_email = input("Enter Email > ")
             # print("Email Sent to ")
-            print(f'Email Sent to {receiver_email} Check Spam ! ')
+            print(f'\nEmail Sent to {receiver_email} Check Spam ! ')
             password = os.getenv("PASSWORD")
             # password = input("Type Your Email Password: ")
 
@@ -122,7 +122,7 @@ class lotto:
 #send sms with lotto numbers
         send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
         if send_sms == "y":
-            print("SMS SENT !")
+            print("\nSMS SENT !")
             account_sid = os.getenv("TWIL_ACCOUNT_SID")
             auth_token = os.getenv("TWIL_AUTH_TOKEN")
             client = Client(account_sid, auth_token)
@@ -140,7 +140,7 @@ class lotto:
 ### ADD BODY MESSAGE TO OWN MESSAGE ###
 ### ADD TESTS TO THIS ! ###
         elif send_sms == "n":
-            print("GOOD LUCK")
+            print("\nGOOD LUCK\n")
 
 # this allows the app to work under one class, with the above setup def
     def __init__(self):
