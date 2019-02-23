@@ -31,14 +31,17 @@ class lotto:
     def start_me(self):
         yes_no = input('\nGenerate Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
 
-        if yes_no == "n":
-            print("GOODBYE")
-            sys.exit()
+        # if yes_no == "n":
+        #     print("GOODBYE")
+        #     sys.exit()
+        # # if yes_no == "y":
+        # #     print("Lets GO !!")
+        # elif yes_no != "y" or "n":
+        #     print(f' *> {yes_no.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
+        #     return self.start_me()
+
         if yes_no == "y":
             print("Lets GO !!")
-        elif yes_no != "y" or "n":
-            print(f' {yes_no} IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
-            return self.start_me()
 
             while True:
                 main = random.choice(self.main_numbers)
@@ -50,6 +53,14 @@ class lotto:
 
                 if len(self.main_numbers_list) == 5:
                     return self.main_numbers_list
+        if yes_no == "n":
+            print("GOODBYE")
+            sys.exit()
+
+        elif yes_no != "y" or "n":
+            print(f'\n *> {yes_no.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
+            return self.start_me()
+            # os.system('clear')
 
 # checks and randomly creates lucky star Numbers ##
     def stars(self):
