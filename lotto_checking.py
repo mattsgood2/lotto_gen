@@ -34,8 +34,11 @@ class lotto:
         if yes_no == "n":
             print("GOODBYE")
             sys.exit()
-        elif yes_no == "y":
+        if yes_no == "y":
             print("Lets GO !!")
+        elif yes_no != "y" or "n":
+            print(f' {yes_no} IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
+            return self.start_me()
 
             while True:
                 main = random.choice(self.main_numbers)
