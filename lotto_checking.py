@@ -24,6 +24,7 @@ class lotto:
         self.start_me()
         self.stars()
         self.print_email_sms()
+        self.send_sms()
 
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
@@ -67,9 +68,7 @@ class lotto:
         timestr = time_now.strftime("%c")
 
         main_n_str = str(self.main_numbers_list)
-        # print(main_n_str.strip('[]'))
         stars_n_str = str(self.stars_numbers_list)
-        # print(stars_n_str.strip('[]'))
 
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
@@ -78,7 +77,7 @@ class lotto:
 
         email = input("Email Me [Y]es or [N]o > ")
         if email == "y":
-            # print("Email Sent")
+            print("Email Sent")
             port = 465
             smtp_server = "smtp.aol.com"
             sender_email = os.getenv("MYEMAIL")
@@ -118,8 +117,17 @@ class lotto:
                 server.sendmail(sender_email, receiver_email, message.as_string())
         elif email == "n":
             print("\n   **! Write Them Down !** \n")
+        # else:
+        #     raise TypeError
+        # print(f'{email} is not a Valid input')
 
 #send sms with lotto numbers
+    def send_sms(self):
+        main_n_str = str(self.main_numbers_list)
+        # print(main_n_str.strip('[]'))
+        stars_n_str = str(self.stars_numbers_list)
+        # print(stars_n_str.strip('[]'))
+
         send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
         if send_sms == "y":
             print("\nSMS SENT !")
