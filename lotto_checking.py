@@ -56,6 +56,7 @@ class lotto:
         if yes_no == "n":
             print("GOODBYE")
             sys.exit()
+            # os.sys("clear")
 
         elif yes_no != "y" or "n":
             print(f'\n *> {yes_no.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
@@ -129,8 +130,11 @@ class lotto:
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
                 server.login(sender_email, password)
                 server.sendmail(sender_email, receiver_email, message.as_string())
-        elif email == "n":
+        if email == "n":
             print("\n   **! Write Them Down !** \n")
+        elif email != "y" or "n":
+            print(f'\n *> {email.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
+            return self.print_email_sms()
         # else:
         #     raise TypeError
         # print(f'{email} is not a Valid input')
