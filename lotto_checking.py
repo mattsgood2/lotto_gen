@@ -81,8 +81,8 @@ class lotto:
             port = 465
             smtp_server = "smtp.aol.com"
             sender_email = os.getenv("MYEMAIL")
-            # receiver_email = os.getenv("PIMEMAIL")
-            receiver_email = input("Enter Email > ")
+            receiver_email = os.getenv("PIMEMAIL")
+            # receiver_email = input("Enter Email > ")
             print(f'\nEmail Sent to {receiver_email}  Check Spam ! ')
             password = os.getenv("PASSWORD")
             # password = input("Type Your Email Password: ")
@@ -108,9 +108,7 @@ class lotto:
             part1 = MIMEText(html, "html")
             message.attach(part1)
             # f'{main_n_str.strip("[]")},{stars_n_str.strip("[]")}'
-        # elif email != "y" or "n":
-        #     print("TRY AGAIN !")
-        #     return self.print_email_sms()
+
 
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
@@ -125,9 +123,6 @@ class lotto:
 
         if email == "n":
             print("\n   **! Write Them Down !** \n")
-        elif email != "y" or "n":
-            print("TRY AGAIN !")
-            return self.print_email_sms()
 
 
 #send sms with lotto numbers
