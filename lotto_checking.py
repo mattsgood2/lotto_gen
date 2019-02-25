@@ -31,15 +31,6 @@ class lotto:
     def start_me(self):
         yes_no = input('\nGenerate Euro Lotto numbers ? [Y]es or [N]o -->  ').lower()
 
-        # if yes_no == "n":
-        #     print("GOODBYE")
-        #     sys.exit()
-        # # if yes_no == "y":
-        # #     print("Lets GO !!")
-        # elif yes_no != "y" or "n":
-        #     print(f' *> {yes_no.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
-        #     return self.start_me()
-
         if yes_no == "y":
             print("Lets GO !!")
 
@@ -85,21 +76,14 @@ class lotto:
         main_n_str = str(self.main_numbers_list)
         stars_n_str = str(self.stars_numbers_list)
 
-        p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
-        p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
-                                         stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
-        print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
-
-        email = input("Email Me [Y]es or [N]o > ")
+        email = input("Email Me [Y]es or [N]o > ").lower()
         if email == "y":
-            print("Email Sent")
             port = 465
             smtp_server = "smtp.aol.com"
             sender_email = os.getenv("MYEMAIL")
             # receiver_email = os.getenv("PIMEMAIL")
             receiver_email = input("Enter Email > ")
-            # print("Email Sent to ")
-            print(f'\nEmail Sent to {receiver_email}\nCheck Spam ! ')
+            print(f'\nEmail Sent to {receiver_email}  Check Spam ! ')
             password = os.getenv("PASSWORD")
             # password = input("Type Your Email Password: ")
 
@@ -124,20 +108,27 @@ class lotto:
             part1 = MIMEText(html, "html")
             message.attach(part1)
             # f'{main_n_str.strip("[]")},{stars_n_str.strip("[]")}'
-
+        # elif email != "y" or "n":
+        #     print("TRY AGAIN !")
+        #     return self.print_email_sms()
 
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
                 server.login(sender_email, password)
                 server.sendmail(sender_email, receiver_email, message.as_string())
+        print("\nEMAIL SENT ! \n")
+
+        p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+        p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+                                         stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+        print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
+
         if email == "n":
             print("\n   **! Write Them Down !** \n")
         elif email != "y" or "n":
-            print(f'\n *> {email.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
+            print("TRY AGAIN !")
             return self.print_email_sms()
-        # else:
-        #     raise TypeError
-        # print(f'{email} is not a Valid input')
+
 
 #send sms with lotto numbers
     def send_sms(self):
