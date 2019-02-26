@@ -107,8 +107,6 @@ class lotto:
 
             part1 = MIMEText(html, "html")
             message.attach(part1)
-            # f'{main_n_str.strip("[]")},{stars_n_str.strip("[]")}'
-
 
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
@@ -121,8 +119,15 @@ class lotto:
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
         print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 
+
         if email == "n":
             print("\n   **! Write Them Down !** \n")
+
+        # elif email != "y" or "n":
+        #     return self.print_email_sms()
+            # print(f'\n *> {email.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
+            # os.system('clear')
+
 
 
 #send sms with lotto numbers
