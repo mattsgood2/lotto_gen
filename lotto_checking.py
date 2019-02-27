@@ -27,6 +27,8 @@ class lotto:
         self.stars()
         self.print_email_sms()
         # self.send_sms()
+        self.printing()
+
 
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
@@ -68,21 +70,6 @@ class lotto:
 
             if len(self.stars_numbers_list) == 2:
                 return self.stars_numbers_list
-
-            # email = input("Email Me [Y] or [N]").lower()
-            # if email == "y":
-            #     return Send_Email()
-            #
-            #     if email == "n":
-            #         print("Write them Down")
-            #
-            # elif email != "y" or "n":
-            #     print("EXIT")
-            #     sys.exit()
-
-
-    # def the_input(self, Send_Email):
-
 
 # prints all the main and Lucky stars umbers and formats them nicely
 ##  Give opton to send email if wanted! ###
@@ -172,9 +159,21 @@ class lotto:
         elif send_sms == "n":
             print("\nGOOD LUCK\n")
 
+            p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+            p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+                                             stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+            print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
+
+            return self.printing
+
+    def printing(self):
+        print("TESTING THIS")
 # this allows the app to work under one class, with the above setup def
+
     def __init__(self):
         self.setup()
+
+
 
 
 # calls the app to start
