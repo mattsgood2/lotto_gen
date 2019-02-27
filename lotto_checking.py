@@ -4,6 +4,8 @@ import random
 import datetime
 import smtplib, ssl
 ########################
+# from senditnow import SendEmail
+
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from twilio.rest import Client
@@ -67,8 +69,23 @@ class lotto:
             if len(self.stars_numbers_list) == 2:
                 return self.stars_numbers_list
 
+            # email = input("Email Me [Y] or [N]").lower()
+            # if email == "y":
+            #     return Send_Email()
+            #
+            #     if email == "n":
+            #         print("Write them Down")
+            #
+            # elif email != "y" or "n":
+            #     print("EXIT")
+            #     sys.exit()
+
+
+    # def the_input(self, Send_Email):
+
+
 # prints all the main and Lucky stars umbers and formats them nicely
-###  Give opton to send email if wanted! ###
+##  Give opton to send email if wanted! ###
     def print_email_sms(self):
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
@@ -76,8 +93,9 @@ class lotto:
         main_n_str = str(self.main_numbers_list)
         stars_n_str = str(self.stars_numbers_list)
 
-        email = input("Email Me [Y]es or [N]o > ").lower()
-        if email == "y":
+
+        if input("Send Email [Y] or [N] > ").lower() == "y":
+            print("EMAIL SENT ! ")
             port = 465
             smtp_server = "smtp.aol.com"
             sender_email = os.getenv("MYEMAIL")
@@ -112,23 +130,12 @@ class lotto:
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
                 server.login(sender_email, password)
                 server.sendmail(sender_email, receiver_email, message.as_string())
-        print("\nEMAIL SENT ! \n")
+#         # print("\nEMAIL SENT ! \n")
 
         p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
         print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
-
-
-        if email == "n":
-            print("\n   **! Write Them Down !** \n")
-
-        # elif email != "y" or "n":
-        #     return self.print_email_sms()
-            # print(f'\n *> {email.upper()} <* IS NOT CORRECT, PLEASE ENTER [Y] or [N]')
-            # os.system('clear')
-
-
 
 #send sms with lotto numbers
     def send_sms(self):
