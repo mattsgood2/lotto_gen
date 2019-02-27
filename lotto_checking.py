@@ -26,7 +26,7 @@ class lotto:
         self.start_me()
         self.stars()
         self.print_email_sms()
-        self.send_sms()
+        # self.send_sms()
 
 # randomly creates lotto numbers, and if already in list will not duplicate them
 # Need to add better options on input
@@ -93,9 +93,8 @@ class lotto:
         main_n_str = str(self.main_numbers_list)
         stars_n_str = str(self.stars_numbers_list)
 
-
-        if input("Send Email [Y] or [N] > ").lower() == "y":
-            print("EMAIL SENT ! ")
+        email = input("Send Email [Y] or [N] > ").lower()
+        if email == "y":
             port = 465
             smtp_server = "smtp.aol.com"
             sender_email = os.getenv("MYEMAIL")
@@ -130,37 +129,44 @@ class lotto:
             with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
                 server.login(sender_email, password)
                 server.sendmail(sender_email, receiver_email, message.as_string())
-#         # print("\nEMAIL SENT ! \n")
 
-        p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
-        p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
-                                         stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
-        print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
+
+            p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+            p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+                                             stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+            print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
+        # print("\nEMAIL SENT ! \n")
 
 #send sms with lotto numbers
-    def send_sms(self):
-        main_n_str = str(self.main_numbers_list)
-        # print(main_n_str.strip('[]'))
-        stars_n_str = str(self.stars_numbers_list)
-        # print(stars_n_str.strip('[]'))
+        elif email == "n":
 
-        send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
-        if send_sms == "y":
-            print("\nSMS SENT !")
-            account_sid = os.getenv("TWIL_ACCOUNT_SID")
-            auth_token = os.getenv("TWIL_AUTH_TOKEN")
-            client = Client(account_sid, auth_token)
+    # def send_sms(self):
+            main_n_str = str(self.main_numbers_list)
+            # print(main_n_str.strip('[]'))
+            stars_n_str = str(self.stars_numbers_list)
+            # print(stars_n_str.strip('[]'))
 
-            body = f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}'
+            send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
+            if send_sms == "y":
+                print("\nSMS SENT !")
+                account_sid = os.getenv("TWIL_ACCOUNT_SID")
+                auth_token = os.getenv("TWIL_AUTH_TOKEN")
+                client = Client(account_sid, auth_token)
 
-            message = client.messages \
-                            .create(
-                                 body= body,
-                                 from_= os.getenv("TWILIO_NUMBER"),
-                                 to= os.getenv("MY_NUMBER"),
-                                 # to= input("Enter Number > ")
+                body = f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}'
 
-                         )
+                message = client.messages \
+                                .create(
+                                     body= body,
+                                     from_= os.getenv("TWILIO_NUMBER"),
+                                     to= os.getenv("MY_NUMBER"),
+                                     # to= input("Enter Number > ")
+
+                             )
+            p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+            p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+                                             stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+            print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 ### ADD BODY MESSAGE TO OWN MESSAGE ###
 ### ADD TESTS TO THIS ! ###
         elif send_sms == "n":
