@@ -13,11 +13,12 @@ class startup:
     stars_numbers = list(range(1,10))
 
     def setup(self):
-        self.playing_main()
-        self.main_numbers()
+        self.playing()
+        # self.start()
+        # self.stars()
 
 
-    def playing_main(self):
+    def playing(self):
         play = input("play Y or N").lower()
         if play == "y":
             return self.start()
@@ -25,15 +26,7 @@ class startup:
             print("EXIT")
             sys.exit()
 
-    # def playing_stars(self):
-    #     play = input("play Y or N").lower()
-    #     if play == "y":
-    #         return self.start()
-    #     if play == "n":
-    #         print("EXIT")
-    #         sys.exit()
-
-    def main_numbers(self):
+    def start(self):
         while True:
             main = random.choice(self.main_numbers)
 
@@ -43,11 +36,23 @@ class startup:
             self.main_numbers_list.sort()
 
             if len(self.main_numbers_list) == 5:
-                print(self.main_numbers_list)
+                # print(self.main_numbers_list)
+                return self.stars()
+
+                # sys.exit()
+    def stars(self):
+        while True:
+            star = random.choice(self.stars_numbers)
+
+            if star not in self.stars_numbers_list:
+                self.stars_numbers_list.append(star)
+
+            self.stars_numbers_list.sort()
+
+            if len(self.stars_numbers_list) == 2:
+                # return self.stars_numbers_list
+                # print(self.stars_numbers_list)
                 sys.exit()
-
-
-
 
     def __init__(self):
         self.setup()
@@ -99,17 +104,17 @@ class startup:
             # os.system('clear')
 # #
 # # # checks and randomly creates lucky star Numbers ##
-# #     def stars(self):
-# #         while True:
-# #             star = random.choice(self.stars_numbers)
-# #
-# #             if star not in self.stars_numbers_list:
-# #                 self.stars_numbers_list.append(star)
-# #
-# #             self.stars_numbers_list.sort()
-# #
-# #             if len(self.stars_numbers_list) == 2:
-# #                 return self.stars_numbers_list
+    # def stars(self):
+    #     while True:
+    #         star = random.choice(self.stars_numbers)
+    #
+    #         if star not in self.stars_numbers_list:
+    #             self.stars_numbers_list.append(star)
+    #
+    #         self.stars_numbers_list.sort()
+    #
+    #         if len(self.stars_numbers_list) == 2:
+    #             return self.stars_numbers_list
 # #
 # # # prints all the main and Lucky stars umbers and formats them nicely
 # # ##  Give opton to send email if wanted! ###
