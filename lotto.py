@@ -21,12 +21,12 @@ class startup:
     def playing(self):
         play = input("play Y or N").lower()
         if play == "y":
-            return self.start()
+            return self.main()
         if play == "n":
             print("EXIT")
             sys.exit()
 
-    def start(self):
+    def main(self):
         while True:
             main = random.choice(self.main_numbers)
 
@@ -37,6 +37,7 @@ class startup:
 
             if len(self.main_numbers_list) == 5:
                 # print(self.main_numbers_list)
+                return self.main_numbers_list
                 return self.stars()
 
                 # sys.exit()
@@ -51,8 +52,14 @@ class startup:
 
             if len(self.stars_numbers_list) == 2:
                 # return self.stars_numbers_list
-                # print(self.stars_numbers_list)
-                sys.exit()
+                print(self.stars_numbers_list)
+                return me()
+                # sys.exit()
+
+    def me(self):
+        print("m{}, s{}".format(self.main_numbers_list, self.stars_numbers_list))
+        sys.exit()
+
 
     def __init__(self):
         self.setup()
