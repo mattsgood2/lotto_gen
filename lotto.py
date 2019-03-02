@@ -36,11 +36,9 @@ class startup:
             self.main_numbers_list.sort()
 
             if len(self.main_numbers_list) == 5:
-                # print(self.main_numbers_list)
-                return self.main_numbers_list
-                return self.stars()
+                self.stars()
 
-                # sys.exit()
+
     def stars(self):
         while True:
             star = random.choice(self.stars_numbers)
@@ -51,10 +49,8 @@ class startup:
             self.stars_numbers_list.sort()
 
             if len(self.stars_numbers_list) == 2:
-                # return self.stars_numbers_list
-                print(self.stars_numbers_list)
-                return me()
-                # sys.exit()
+                self.me()
+
 
     def me(self):
         print("m{}, s{}".format(self.main_numbers_list, self.stars_numbers_list))
