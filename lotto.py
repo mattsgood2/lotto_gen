@@ -1,4 +1,5 @@
 import sys
+import time
 # import os
 import random
 import datetime
@@ -19,16 +20,17 @@ class startup:
 
 
     def playing(self):
-        play = input("play Y or N").lower()
+        play = input("\nGenerate Euro Number [Y] or [N] > ").lower()
         if play == "y":
-            self.main()
+            print("\nLets Pick ! \n")
+            time.sleep(2),self.main()
 
         if play == "n":
-            print("EXIT")
+            print("EXIT, GOODBYE !\n")
             sys.exit()
 
         if play != "y" or "n":
-            print("ENTER [Y]es or [N]o ! ")
+            print("\nENTER [Y]es or [N]o ! \n")
             self.playing()
 
 
@@ -60,6 +62,7 @@ class startup:
 
     def me(self):
         print(f'Main Numbers {str(self.main_numbers_list).strip("[]")} Stars {str(self.stars_numbers_list).strip("[]")}')
+        print("\nGOODLUCK !\n")
         sys.exit()
 
 
