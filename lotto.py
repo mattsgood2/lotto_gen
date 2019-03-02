@@ -21,10 +21,16 @@ class startup:
     def playing(self):
         play = input("play Y or N").lower()
         if play == "y":
-            return self.main()
+            self.main()
+
         if play == "n":
             print("EXIT")
             sys.exit()
+
+        if play != "y" or "n":
+            print("ENTER [Y]es or [N]o ! ")
+            self.playing()
+
 
     def main(self):
         while True:
@@ -53,7 +59,7 @@ class startup:
 
 
     def me(self):
-        print("m{}, s{}".format(self.main_numbers_list, self.stars_numbers_list))
+        print(f'Main Numbers {str(self.main_numbers_list).strip("[]")} Stars {str(self.stars_numbers_list).strip("[]")}')
         sys.exit()
 
 
