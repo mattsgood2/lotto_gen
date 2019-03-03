@@ -26,7 +26,7 @@ class startup:
         play = input("\nGenerate Euro Number [Y] or [N] > ").lower()
         if play == "y":
             print("\nLets Pick ! \n")
-            time.sleep(2),self.main()
+            time.sleep(1),self.main()
 
         if play == "n":
             print("EXIT, GOODBYE !\n")
@@ -39,10 +39,18 @@ class startup:
     def send_email_now(self):
         email = input("Send Email, [Y] or [N] > ")
         if email == "y":
-            self.send_email()
+            print("\nLets Send This Email")
+            time.sleep(1),self.send_email()
+
         if email == "n":
             sys.exit()
+
+        if email == "e":
+            print("GOODBYE")
+            sys.exit()
+
         if email != "y" or "n":
+            print(f'{email.upper()} is NOT CORRECT [Y] or [N] !')
             self.send_email_now()
 
 
