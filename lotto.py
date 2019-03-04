@@ -6,6 +6,7 @@ import datetime
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from twilio.rest import Client
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -18,8 +19,6 @@ class startup:
 
     def setup(self):
         self.playing()
-        # self.start()
-        # self.stars()
 
 ### Generates Lotto Numbers ###
     def playing(self):
@@ -51,12 +50,15 @@ class startup:
             print("GOODBYE")
             sys.exit()
 
+
+### Input for Sending SMS ###
     def sending_sms(self):
-        send_text = input("SEND SMS [Y] or [N]")
+        send_text = input("\nSEND SMS [Y] or [N] > ")
         if send_text == "y":
-            send_sms()
-            if send_text == "n":
-                sys.exit()
+            self.send_sms()
+        if send_text == "n":
+            print("\nGOODLUCK")
+            sys.exit()
 
 ### Generates the Main Numbers ###
     def main(self):
@@ -145,7 +147,7 @@ class startup:
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
         time.sleep(.600),print("\nCOPY TO FILE\n")
-        sys.exit()
+        self.sending_sms()
         # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 
     def send_sms(self):
@@ -167,11 +169,13 @@ class startup:
                              # to= input("Enter Number > ")
 
                          )
+        print("\nSMS AWAY !!!\n")
+        sys.exit()
         # p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
         # p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
         #                                  stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
         # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
-    
+
     def __init__(self):
         self.setup()
 # from email.mime.text import MIMEText
