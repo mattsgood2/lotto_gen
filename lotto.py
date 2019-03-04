@@ -51,6 +51,12 @@ class startup:
             print("GOODBYE")
             sys.exit()
 
+    def sending_sms(self):
+        send_text = input("SEND SMS [Y] or [N]")
+        if send_text == "y":
+            send_sms()
+            if send_text == "n":
+                sys.exit()
 
 ### Generates the Main Numbers ###
     def main(self):
@@ -127,6 +133,7 @@ class startup:
             self.to_file()
             # sys.exit()
 
+### Copies to a File ###
     def to_file(self):
         time_now = datetime.datetime.now()
         timestr = time_now.strftime("%c")
@@ -141,7 +148,30 @@ class startup:
         sys.exit()
         # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 
+    def send_sms(self):
+        main_n_str = str(self.main_numbers_list)
+        # print(main_n_str.strip('[]'))
+        stars_n_str = str(self.stars_numbers_list)
+        # print(stars_n_str.strip('[]'))
+        account_sid = os.getenv("TWIL_ACCOUNT_SID")
+        auth_token = os.getenv("TWIL_AUTH_TOKEN")
+        client = Client(account_sid, auth_token)
 
+        body = f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}'
+
+        message = client.messages \
+                        .create(
+                             body= body,
+                             from_= os.getenv("TWILIO_NUMBER"),
+                             to= os.getenv("MY_NUMBER"),
+                             # to= input("Enter Number > ")
+
+                         )
+        # p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+        # p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+        #                                  stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+        # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
+    
     def __init__(self):
         self.setup()
 # from email.mime.text import MIMEText
@@ -260,33 +290,33 @@ class startup:
 # # #send sms with lotto numbers
 # #         elif email == "n":
 # #
-# #     # def send_sms(self):
-# #             main_n_str = str(self.main_numbers_list)
-# #             # print(main_n_str.strip('[]'))
-# #             stars_n_str = str(self.stars_numbers_list)
-# #             # print(stars_n_str.strip('[]'))
-# #
-# #             send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
-# #             if send_sms == "y":
-# #                 print("\nSMS SENT !")
-# #                 account_sid = os.getenv("TWIL_ACCOUNT_SID")
-# #                 auth_token = os.getenv("TWIL_AUTH_TOKEN")
-# #                 client = Client(account_sid, auth_token)
-# #
-# #                 body = f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}'
-# #
-# #                 message = client.messages \
-# #                                 .create(
-# #                                      body= body,
-# #                                      from_= os.getenv("TWILIO_NUMBER"),
-# #                                      to= os.getenv("MY_NUMBER"),
-# #                                      # to= input("Enter Number > ")
-# #
-# #                              )
-# #             p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
-# #             p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
-# #                                              stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
-# #             print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
+#     # def send_sms(self):
+#             main_n_str = str(self.main_numbers_list)
+#             # print(main_n_str.strip('[]'))
+#             stars_n_str = str(self.stars_numbers_list)
+#             # print(stars_n_str.strip('[]'))
+#
+#             send_sms = input("SEND SMS ? [Y] or [N] > " ).lower()
+#             if send_sms == "y":
+#                 print("\nSMS SENT !")
+#                 account_sid = os.getenv("TWIL_ACCOUNT_SID")
+#                 auth_token = os.getenv("TWIL_AUTH_TOKEN")
+#                 client = Client(account_sid, auth_token)
+#
+#                 body = f'Lotto Numbers are {main_n_str.strip("[]")}, Lucky Stars {stars_n_str.strip("[]")}'
+#
+#                 message = client.messages \
+#                                 .create(
+#                                      body= body,
+#                                      from_= os.getenv("TWILIO_NUMBER"),
+#                                      to= os.getenv("MY_NUMBER"),
+#                                      # to= input("Enter Number > ")
+#
+#                              )
+#             p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+#             p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+#                                              stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+#             print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 # # ### ADD BODY MESSAGE TO OWN MESSAGE ###
 # # ### ADD TESTS TO THIS ! ###
 # #         elif send_sms == "n":
