@@ -25,7 +25,7 @@ class startup:
         time.sleep(.800),os.system('cls')
         play = input("\n Generate Euro Number [Y] or [N] > ").lower()
         if play == "y":
-            print("\n Lets Pick ! \n")
+            print("\n Lets Pick ! \n"),time.sleep(2)
             time.sleep(.500), os.system('cls')
             time.sleep(1),self.main()
 
@@ -35,16 +35,17 @@ class startup:
             sys.exit()
 
         if play != "y" or "n":
-            print("\n To Play ENTER [Y]es or [N]o ! \n")
+            print("\n To Play ENTER [Y]es or [N]o ! \n"),time.sleep(1)
             self.playing()
 
 ### Checks if You Want Email ###
     def send_email_now(self):
+        email = time.sleep(2)
         email = input("\n Send Email, [Y] or [N] > ").lower()
 
         if email == "y":
-            print("\n Lets Send This Email")
-            time.sleep(1),self.send_email()
+            print("\n Lets Send This Email"),time.sleep(1)
+            self.send_email()
 
         if email == "n":
             self.to_file()
@@ -58,10 +59,10 @@ class startup:
     def sending_sms(self):
         send_text = input("\n SEND SMS [Y] or [N] > ").lower()
         if send_text == "y":
-            self.send_sms()
+            time.sleep(1),self.send_sms()
 
         if send_text == "n":
-            print("\n GOODLUCK \n")
+            # print("\n GOODLUCK \n")
             self.iaef()
             sys.exit()
 
@@ -98,6 +99,7 @@ class startup:
 
 ### Prints The Numbers Out ###
     def print_nums(self):
+        print("\n M Goodmna Lotto\n\n")
         print(f'\n\n Main Numbers {str(self.main_numbers_list).strip("[]")} Stars {str(self.stars_numbers_list).strip("[]")}')
         # print("\nGOODLUCK !\n")
         self.send_email_now()
@@ -162,6 +164,7 @@ class startup:
         self.sending_sms()
         # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 
+### Sends The SMS ###
     def send_sms(self):
         main_n_str = str(self.main_numbers_list)
         stars_n_str = str(self.stars_numbers_list)
@@ -181,19 +184,18 @@ class startup:
 
                              )
 
-        print("\n SMS AWAY !!!\n")
-        time.sleep(.600),print("\n\n GOODLUCK \n\n")
+        time.sleep(1),print("\n SMS AWAY, GOODLUCK !!!\n")
+        self.iaef()
         sys.exit()
 
-
-
+### If All Else Fails, prints out the Numbers ###
     def iaef(self):
         main_n_str = str(self.main_numbers_list)
         stars_n_str = str(self.stars_numbers_list)
         os.system('cls')
-        print("\n YOUR NUMBERS ARE ! ")
-        time.sleep(1),print(f'\n Main Numbers > {main_n_str.strip("[]")} < Lucky Stars > {stars_n_str.strip("[]")} <\n')
-        time.sleep(.650),print("\n GOODLUCK !\n")
+        time.sleep(1),print("\n YOUR NUMBERS ARE ! ")
+        time.sleep(2),print(f'\n Main Numbers > {main_n_str.strip("[]")} < Lucky Stars > {stars_n_str.strip("[]")} <\n')
+        time.sleep(2),print("\n GOODLUCK !\n\n"),time.sleep(3)
 
 
 
