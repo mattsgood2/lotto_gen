@@ -22,18 +22,20 @@ class startup:
 
 ### Generates Lotto Numbers ###
     def playing(self):
-        os.system('cls')
+        time.sleep(.800),os.system('cls')
         play = input("\n Generate Euro Number [Y] or [N] > ").lower()
         if play == "y":
             print("\n Lets Pick ! \n")
+            time.sleep(.500), os.system('cls')
             time.sleep(1),self.main()
+
 
         if play == "n":
             print("\n EXIT, GOODBYE !\n")
             sys.exit()
 
         if play != "y" or "n":
-            print("\n ENTER [Y]es or [N]o ! \n")
+            print("\n To Play ENTER [Y]es or [N]o ! \n")
             self.playing()
 
 ### Checks if You Want Email ###
@@ -48,7 +50,7 @@ class startup:
             self.to_file()
 
         if email != "y" or "n":
-            print("\n ENTER [Y]es or [N]o ! \n")
+            print("\n Email ENTER [Y]es or [N]o ! \n")
             self.send_email_now()
 
 
@@ -60,10 +62,11 @@ class startup:
 
         if send_text == "n":
             print("\n GOODLUCK \n")
+            self.iaef()
             sys.exit()
 
         if send_text != "y" or "n":
-            print("\n ENTER [Y]es or [N]o ! \n")
+            print("\n SMS ENTER [Y]es or [N]o ! \n")
             self.sending_sms()
 
 ### Generates the Main Numbers ###
@@ -110,7 +113,8 @@ class startup:
         sender_email = os.getenv("MYEMAIL")
         receiver_email = os.getenv("PIMEMAIL")
         # receiver_email = input("Enter Email > ")
-        print(f'\nEmail Sent to {receiver_email}  Check Spam ! \n')
+        print(f'\n Email Sent to {receiver_email}  Check Spam ! \n')
+        time.sleep(2),os.system('cls')
         password = os.getenv("PASSWORD")
         # password = input("Type Your Email Password: ")
 
@@ -153,7 +157,8 @@ class startup:
         p = open("/Users/matts/mywork/Lotto_take_2.txt", "a")
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
-        time.sleep(.600),print("\n COPY TO FILE")
+        time.sleep(.800),print("\n COPIED TO FILE")
+        time.sleep(1),os.system('cls')
         self.sending_sms()
         # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 
@@ -177,8 +182,18 @@ class startup:
                              )
 
         print("\n SMS AWAY !!!\n")
-        time.sleep(.600),print("\n\n GOODLUCK")
+        time.sleep(.600),print("\n\n GOODLUCK \n\n")
+        sys.exit()
 
+
+
+    def iaef(self):
+        main_n_str = str(self.main_numbers_list)
+        stars_n_str = str(self.stars_numbers_list)
+        os.system('cls')
+        print("\n YOUR NUMBERS ARE ! ")
+        time.sleep(1),print(f'\n Main Numbers > {main_n_str.strip("[]")} < Lucky Stars > {stars_n_str.strip("[]")} <\n')
+        time.sleep(.650),print("\n GOODLUCK !\n")
 
 
 
