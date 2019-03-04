@@ -22,45 +22,46 @@ class startup:
 
 ### Generates Lotto Numbers ###
     def playing(self):
-        play = input("\nGenerate Euro Number [Y] or [N] > ").lower()
+        os.system('cls')
+        play = input("\n Generate Euro Number [Y] or [N] > ").lower()
         if play == "y":
-            print("\nLets Pick ! \n")
+            print("\n Lets Pick ! \n")
             time.sleep(1),self.main()
 
         if play == "n":
-            print("EXIT, GOODBYE !\n")
+            print("\n EXIT, GOODBYE !\n")
             sys.exit()
 
         if play != "y" or "n":
-            print("\nENTER [Y]es or [N]o ! \n")
+            print("\n ENTER [Y]es or [N]o ! \n")
             self.playing()
 
 ### Checks if You Want Email ###
     def send_email_now(self):
-        email = input("\nSend Email, [Y] or [N] > ").lower()
+        email = input("\n Send Email, [Y] or [N] > ").lower()
 
         if email == "y":
-            print("\nLets Send This Email")
+            print("\n Lets Send This Email")
             time.sleep(1),self.send_email()
 
         if email == "n":
             self.to_file()
 
         if email != "y" or "n":
-            print("\nENTER [Y]es or [N]o ! \n")
+            print("\n ENTER [Y]es or [N]o ! \n")
             self.send_email_now()
 
 
 ### Input for Sending SMS ###
     def sending_sms(self):
-        send_text = input("\nSEND SMS [Y] or [N] > ").lower()
+        send_text = input("\n SEND SMS [Y] or [N] > ").lower()
         if send_text == "y":
             self.send_sms()
         if send_text == "n":
-            print("\nGOODLUCK")
+            print("\n GOODLUCK \n")
             sys.exit()
         if send_text != "y" or "n":
-            print("\nENTER [Y]es or [N]o ! \n")
+            print("\n ENTER [Y]es or [N]o ! \n")
             self.sending_sms()
 
 ### Generates the Main Numbers ###
@@ -87,11 +88,12 @@ class startup:
             self.stars_numbers_list.sort()
 
             if len(self.stars_numbers_list) == 2:
+                os.system('cls')
                 self.print_nums()
 
 ### Prints The Numbers Out ###
     def print_nums(self):
-        print(f'Main Numbers {str(self.main_numbers_list).strip("[]")} Stars {str(self.stars_numbers_list).strip("[]")}')
+        print(f'\n\n Main Numbers {str(self.main_numbers_list).strip("[]")} Stars {str(self.stars_numbers_list).strip("[]")}')
         # print("\nGOODLUCK !\n")
         self.send_email_now()
 
@@ -149,7 +151,7 @@ class startup:
         p = open("/Users/matts/mywork/Lotto_take_2.txt", "a")
         p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
                                          stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
-        time.sleep(.600),print("\nCOPY TO FILE\n")
+        time.sleep(.600),print("\n COPY TO FILE")
         self.sending_sms()
         # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 
