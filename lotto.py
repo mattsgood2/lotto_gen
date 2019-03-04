@@ -39,20 +39,18 @@ class startup:
 ### Checks if You Want Email ###
     def send_email_now(self):
         email = input("Send Email, [Y] or [N] > ")
+
         if email == "y":
             print("\nLets Send This Email")
             time.sleep(1),self.send_email()
 
         if email == "n":
-            sys.exit()
+            self.to_file()
 
         if email == "e":
             print("GOODBYE")
             sys.exit()
 
-        if email != "y" or "n":
-            print(f'{email.upper()} is NOT CORRECT [Y] or [N] !')
-            self.send_email_now()
 
 ### Generates the Main Numbers ###
     def main(self):
@@ -85,7 +83,7 @@ class startup:
         print(f'Main Numbers {str(self.main_numbers_list).strip("[]")} Stars {str(self.stars_numbers_list).strip("[]")}')
         print("\nGOODLUCK !\n")
         self.send_email_now()
-        # sys.exit()
+
 
 ### Sends The Email Out ###
     def send_email(self):
@@ -126,7 +124,22 @@ class startup:
         with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-            sys.exit()
+            self.to_file()
+            # sys.exit()
+
+    def to_file(self):
+        time_now = datetime.datetime.now()
+        timestr = time_now.strftime("%c")
+
+        main_n_str = str(self.main_numbers_list)
+        stars_n_str = str(self.stars_numbers_list)
+
+        p = open("/Users/matts/mywork/Lotto_take_2.txt", "a")
+        p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+                                         stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+        time.sleep(.600),print("\nCOPY TO FILE\n")
+        sys.exit()
+        # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
 
 
     def __init__(self):
@@ -238,11 +251,11 @@ class startup:
         #         server.sendmail(sender_email, receiver_email, message.as_string())
         #
 
-# #             p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
-# #             p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
-# #                                              stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
-# #             print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
-# #         # print("\nEMAIL SENT ! \n")
+            # p = open("/Users/matts/mywork/Lotto_numbers.txt", "a")
+            # p.write("\nMain Numbers" + " = " + main_n_str.strip('[]') + ", " + "Lucky Stars" + " = " +
+            #                                  stars_n_str.strip('[]') + " | Date Made = " + timestr + "\n")
+            # print(f'\nMain Numbers {main_n_str.strip("[]")} \nLucky Stars * {stars_n_str.strip("[]")}\n')
+        # print("\nEMAIL SENT ! \n")
 # #
 # # #send sms with lotto numbers
 # #         elif email == "n":
