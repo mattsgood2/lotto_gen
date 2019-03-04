@@ -57,9 +57,11 @@ class startup:
         send_text = input("\n SEND SMS [Y] or [N] > ").lower()
         if send_text == "y":
             self.send_sms()
+
         if send_text == "n":
             print("\n GOODLUCK \n")
             sys.exit()
+
         if send_text != "y" or "n":
             print("\n ENTER [Y]es or [N]o ! \n")
             self.sending_sms()
@@ -174,9 +176,10 @@ class startup:
 
                              )
 
-        print("\nSMS AWAY !!!\n")
-        time.sleep(.600),print("GOODLUCK")
-        sys.exit()
+        print("\n SMS AWAY !!!\n")
+        time.sleep(.600),print("\n\n GOODLUCK")
+
+
 
 
     def __init__(self):
